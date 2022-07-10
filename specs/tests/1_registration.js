@@ -22,6 +22,7 @@ describe('Example of mocha tests', () => {
         await errorMessage.waitForDisplayed({timeout: 3000})
         await expect(await errorMessage.getText()).toEqual("Username is required")
     })
+    
     it('Should not allow to create user with blank password', async function() {
         await $('#userNameOnRegister').setValue('Hiqo')
         await $('#passwordOnRegister').setValue('')
@@ -30,6 +31,7 @@ describe('Example of mocha tests', () => {
         await errorMessage.waitForDisplayed({timeout: 3000})
         await expect(await errorMessage.getText()).toEqual("Password is required")
     })
+    
     it('Should not allow to create user with less than 3 characters is username', async function() {
         await $('#userNameOnRegister').setValue('Hi')
         await $('#passwordOnRegister').setValue('123abcA!')
@@ -38,6 +40,7 @@ describe('Example of mocha tests', () => {
         await errorMessage.waitForDisplayed({timeout: 3000})
         await expect(await errorMessage.getText()).toEqual("Username should contain at least 3 characters")
     })
+    
     it('Should not allow to create user with more than 40 characters is username', async function() {
         await browser.execute(async function() {
             const username = document.querySelector("#userNameOnRegister")
@@ -50,6 +53,7 @@ describe('Example of mocha tests', () => {
         await errorMessage.waitForDisplayed({timeout: 3000})
         await expect(await errorMessage.getText()).toEqual("Username can't exceed 40 characters")
     })
+    
     it('Should not allow to create user with prefix space in username', async function() {
         await $('#userNameOnRegister').setValue(' Hiqo')
         await $('#passwordOnRegister').setValue('123abcA!')
@@ -94,6 +98,7 @@ describe('Example of mocha tests', () => {
         await errorMessage.waitForDisplayed({timeout: 3000})
         await expect(await errorMessage.getText()).toEqual("Password should contain at least one character in upper case")
     })
+    
     it('Should not allow to create user without lower case characters is password', async function() {
         await $('#userNameOnRegister').setValue('Hiqo')
         await $('#passwordOnRegister').setValue('123ABCAA')
@@ -102,6 +107,7 @@ describe('Example of mocha tests', () => {
         await errorMessage.waitForDisplayed({timeout: 3000})
         await expect(await errorMessage.getText()).toEqual("Password should contain at least one character in lower case")
     })
+    
     it('Should allow to create user without 3 characters is username and 8 in password', async function() {
         await $('#userNameOnRegister').setValue('Hiq')
         await $('#passwordOnRegister').setValue('123abcA!')
@@ -126,5 +132,4 @@ describe('Example of mocha tests', () => {
         await errorMessage.waitForDisplayed({timeout: 3000})
         await expect(await errorMessage.getText()).toEqual("Username is in use")
     })
-
 });
