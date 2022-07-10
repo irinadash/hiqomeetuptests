@@ -14,6 +14,7 @@ describe('Example of mocha tests', () => {
         await errorMessage.waitForDisplayed({timeout: 3000})
         await expect(await errorMessage.getText()).toEqual('Please, provide valid data')
     })
+    
     it('Should not allow to create user with blank username', async function() {
         await $('#userNameOnRegister').setValue('')
         await $('#passwordOnRegister').setValue('123abcA!')
@@ -62,6 +63,7 @@ describe('Example of mocha tests', () => {
         await errorMessage.waitForDisplayed({timeout: 3000})
         await expect(await errorMessage.getText()).toEqual("Prefix and postfix spaces are not allowed is username")
     })
+    
     it('Should not allow to create user with postfix space in username', async function() {
         await $('#userNameOnRegister').setValue('Hiqo ')
         await $('#passwordOnRegister').setValue('123abcA!')
@@ -70,6 +72,7 @@ describe('Example of mocha tests', () => {
         await errorMessage.waitForDisplayed({timeout: 3000})
         await expect(await errorMessage.getText()).toEqual("Prefix and postfix spaces are not allowed is username")
     })
+    
     it('Should not allow to create user with less than 8 characters is password', async function() {
         await $('#userNameOnRegister').setValue('Hiqo')
         await $('#passwordOnRegister').setValue('123abcA')
@@ -78,6 +81,7 @@ describe('Example of mocha tests', () => {
         await errorMessage.waitForDisplayed({timeout: 3000})
         await expect(await errorMessage.getText()).toEqual("Password should contain at least 8 characters")
     })
+    
     it('Should not allow to create user more less than 20 characters is password', async function() {
         await browser.execute(async function() {
             const username = document.querySelector("#passwordOnRegister")
@@ -90,6 +94,7 @@ describe('Example of mocha tests', () => {
         await errorMessage.waitForDisplayed({timeout: 3000})
         await expect(await errorMessage.getText()).toEqual("Password can't exceed 20 characters")
     })
+    
     it('Should not allow to create user without upper case characters is password', async function() {
         await $('#userNameOnRegister').setValue('Hiqo')
         await $('#passwordOnRegister').setValue('123abcaa')
@@ -116,6 +121,7 @@ describe('Example of mocha tests', () => {
         await errorMessage.waitForDisplayed({timeout: 3000})
         await expect(await errorMessage.getText()).toEqual("Successfully registered! Please, click Back to return on login page")
     })
+    
     it('Should allow to create user without 40 characters is username and 20 in password', async function() {
         await $('#userNameOnRegister').setValue('HiqoUserHiqoUserHiqoUserHiqoUserHiqoUser')
         await $('#passwordOnRegister').setValue('123abcA123abcA123abc')
@@ -124,6 +130,7 @@ describe('Example of mocha tests', () => {
         await errorMessage.waitForDisplayed({timeout: 3000})
         await expect(await errorMessage.getText()).toEqual("Successfully registered! Please, click Back to return on login page")
     })
+    
     it('Should not allow to create user without credentials that are already in the application', async function() {
         await $('#userNameOnRegister').setValue('HiqoUserHiqoUserHiqoUserHiqoUserHiqoUser')
         await $('#passwordOnRegister').setValue('123abcA123abcA123abc')
