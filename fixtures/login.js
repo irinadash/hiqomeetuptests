@@ -5,5 +5,6 @@ export const loginData = {
         { username: "", password: "123abcA!", message: "Username is required" },
         { username: "Hiqo", password: "", message: "Password is required" },
         { username: "Hiq", password: "123abcA!asd", message: "Invalid credentials" },
+        { username: " Hiqo", password: "123abcA!asd", message: "Invalid credentials" }
       ]
 }
