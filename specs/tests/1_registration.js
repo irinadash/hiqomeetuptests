@@ -139,4 +139,13 @@ describe('Example of mocha tests', () => {
         await errorMessage.waitForDisplayed({timeout: 3000})
         await expect(await errorMessage.getText()).toEqual("Username is in use")
     })
+    
+    it('Should not allow to create user without credentials that are already in the application', async function() {
+        await $('#userNameOnRegister').setValue('HiqoUserHiqoUserHiqoUserHiqoUserHiqoUser')
+        await $('#passwordOnRegister').setValue('123abcA123abcA123abc')
+        await $('#register').click()
+        let errorMessage = await $('#errorMessageOnRegister')
+        await errorMessage.waitForDisplayed({timeout: 3000})
+        await expect(await errorMessage.getText()).toEqual("Username is in use")
+    })
 });
